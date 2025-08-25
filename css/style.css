@@ -345,7 +345,7 @@ body {
   width: 600px;
   height: 200px;
   border-radius: 9999px;
-  background: rgba(99, 97, 220, 0.4);
+  background: rgba(99, 97, 220, 0.6);
   filter: blur(100px);
 }
 
