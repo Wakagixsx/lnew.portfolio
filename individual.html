@@ -106,7 +106,7 @@
                 if (checkingNumber > maxCheckNumber || pendingChecks > 0) return;
                 
                 pendingChecks++;
-                const url = `image/Individual/${checkingNumber}.jpg`;
+                const url = `image/individual/${checkingNumber}.jpg`;
                 
                 checkImageExists(url, function(exists) {
                     pendingChecks--;
