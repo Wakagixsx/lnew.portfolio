@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lnew - Product Designer</title>
+    <link rel="stylesheet" href="./css/style.min.css">
+    <link rel="shortcut icon" href="./assets/public/favicon.svg"/>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+</head>
+<body>
+    <div class="head">
+        <!-- <div class="main">
+            <a href="./index.html" class="logo"><img src="./assets/public/logo_text.svg"></a>
+            <div class="menu">
+                <li class="magical btn nav" onclick="window.location.href='./index.html'">主页</li>
+                <li class="magical btn" onclick="window.location.href='./work.html'">Work</li>
+                <li class="magical btn" onclick="window.location.href='./blog.html'">Blog</li>
+                <li class="magical btn" onclick="window.location.href='./about.html'">About</li>
+            </div>
+            <div class="menu" id="menu-expand">
+                <li class="magical btn skin" id="menu-expand-child"><i class="icon menu-icon"></i></li>
+            </div>
+            <div id="menu-panel">
+                <div class="menu-panel-content">
+                    <li class="magical btn nav" onclick="window.location.href='./index.html'">主页</li>
+                    <li class="magical btn" onclick="window.location.href='./work.html'">Work</li>
+                    <li class="magical btn" onclick="window.location.href='./blog.html'">Blog</li>
+                    <li class="magical btn" onclick="window.location.href='./about.html'">About</li>
+                </div>
+            </div>
+        </div> -->
+        <blockquote><img src="./assets/public/logo.svg"></blockquote>
+    </div>
+    <div class="index">
+        <div class="hello">
+            <div class="title">
+                <div class="title-hi">你好, 我叫</div>
+                <a class="title-name">徐时新</a>
+            </div>
+            <div class="hello-desc" id="typed"></div>
+        </div>
+        <div class="content-divider"></div>
+        <div class="quickly-link">
+            <!-- <div class="title-hi">What did I do</div> -->
+            <div class="loader"></div>
+            <!-- //项目页 -->
+            <div class="work">
+                <div class="card-list">
+                    <div class="magical item">
+                        <a href="gangyi.html" target="_blank">
+                            <div class="dark"><img class="cover" src="./assets/work/designstystem.png"></div>
+                            <div class="text">
+                                <div class="title-area">
+                                    <div class="title">
+                                        <div class="name">GangYi</div>
+                                        <div class="name link"> ↗</div>
+                                    </div>
+                                    <div class="tag tag-app">Design System</div>
+                                </div>
+                                <div class="desc">钢易科技生产力数字化服务平台</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="magical item">
+                        <a href="flybytrip.html" target="_blank">
+                            <div class="dark"><img class="cover" src="./assets/work/flybytrip.png"></div>
+                            <div class="text">
+                                <div class="title-area">
+                                    <div class="title">
+                                        <div class="name">FlybyTrip</div>
+                                        <div class="name link"> ↗</div>
+                                    </div>
+                                    <div class="tag tag-web">web+app</div>
+                                </div>
+                                <div class="desc">一站式企业差旅及管控管理平台</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="magical item">
+                        <a href="individual.html" target="_blank">
+                            <div class="dark"><img class="cover" src="./assets/work/individual.png"></div>
+                            <div class="text">
+                                <div class="title-area">
+                                    <div class="title">
+                                        <div class="name">个人兴趣作品</div>
+                                        <div class="name link"> ↗</div>
+                                    </div>
+                                    <div class="tag tag-assets">个人</div>
+                                </div>
+                                <div class="desc">书法</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="loader"></div>
+            <div class="about">
+                <div class="about-top">
+                    <!-- <div class="about-name">Name</div> -->
+                    <div class="about-info">
+                        <div class="about-info-left">
+                            <div class="about-info-title">简介</div>
+                            <div class="introduce-desc">
+                                8年+ UI 设计经验，具有产品思维，熟悉前端知识，熟悉B端C端平台规范<br>
+                                熟悉AIGC行业相关知识与技能<br>
+                                能主导产品从0到1的设计过程，能独立搭建设计系统<br>
+                                曾从事智能制造、商旅/旅游、智能停车、教育行业<br>   
+                            </div>
+                        </div>
+                        <div class="about-info-right">
+                            <div class="contact">
+                                <div class="about-info-title">联系方式</div>
+                                <div class="contact-desc">
+                                    <div class="list">
+                                        <div class="list-label">邮箱：</div>
+                                        <div href="javascript:" class="list-value" id="email" tabindex="0" role="button"  title="点击复制邮箱">
+                                            <a id="emailCopied">wakagidai@163.com</a>
+                                        </div>
+                                        <span class="list-value copied">copied&nbsp;✓</span>
+                                    </div>
+                                    <div class="list">
+                                        <div class="list-label">微信：</div>
+                                        <div class="list-value">
+                                            <a class="tooltip">wakagixsx
+                                                <div class="tooltip-box">
+                                                    <img src="./assets/about/wechat.png">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="resume">
+                                <div class="about-info-title resume-title">简历</div>
+                                <div class="resume-desc">
+                                    <div class="resume-desc-helptext">Download my resume (PDF & 10MB)</div>
+                                    <div class="magical resume-btn"><a href="" target="_blank">下载
+                                    </a></div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="about-middle">
+                    <div class="power">
+                        <div class="list-00">
+                            <div class="magical power-card-number">
+                                <a>
+                                    <div class="card-title">7</div>
+                                    <div class="card-text">Work</div>
+                                </a>
+                            </div>
+                            <div class="magical power-card-number">
+                                <a>
+                                    <div class="card-title">60⁺</div>
+                                    <div class="card-text">Project</div>
+                                </a>
+                            </div>
+                            <div class="magical power-card-number">
+                                <a>
+                                    <div class="card-title">130⁺</div>
+                                    <div class="card-text">Article</div>
+                                </a>
+                            </div>
+                            <div class="magical power-card-number">
+                                <a>
+                                    <div class="card-title">3</div>
+                                    <div class="card-text">Patent</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="list-01">
+                            <div class="magical power-card">
+                                <a>
+                                    <div class="card-img" style="background-image: url('./assets/about/abstract.svg')"></div>
+                                    <div class="card-text">My abilities</div>
+                                </a>
+                            </div>
+                            <div class="magical power-card">
+                                <a>
+                                    <div class="card-img" style="background-image: url('./assets/about/menu.svg')"></div>
+                                    <div class="card-text">My abilities</div>
+                                </a>
+                            </div>
+                            <div class="magical power-card">
+                                <a>
+                                    <div class="card-img" style="background-image: url('./assets/about/code.svg')"></div>
+                                    <div class="card-text">My abilities</div>
+                                </a>
+                            </div>
+                            <div class="magical power-card">
+                                <a>
+                                    <div class="card-img" style="background-image: url('./assets/about/pin.svg')"></div>
+                                    <div class="card-text">My abilities</div>
+                                </a>
+                            </div>
+                            <div class="magical power-card">
+                                <a>
+                                    <div class="card-img" style="background-image: url('./assets/about/pen.svg')"></div>
+                                    <div class="card-text">My abilities</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="about-bottom">
+                    <div class="experience">
+                        <div class="item">
+                            <div class="time">❖ 2021.09 ~ 2025.08</div>
+                            <div class="name">
+                                <div class="company"><a href="" target="_blank">杭州钢易科技有限公司</a></div>
+                                <div class="job">UI 设计师</div>
+                            </div>
+                            <div class="project-experience">
+                                <div class="item">
+                                    <div class="title">钢易科技</div>
+                                    <div class="desc">
+                                        <ul>
+                                            <li>独立负责公司 钢易智企、钢易智通、钢易制造 等多产品线的 UI 设计管理与交付，保障产品在多平台下的视觉一致性与交互标准化；</li>
+                                            <li>主导 GANGYI 设计系统在 Figma 的全流程搭建与持续迭代，建立组件库、样式库与设计规范，实现跨产品线的高效复用与统一，显著降低重复劳动，提升团队整体设计与研发协作效率；</li>
+                                            <li>在产品研发流程中，积极参与并把控功能评审与体验决策，从设计系统与用户体验双重视角提供改进建议，推动形成更具一致性与扩展性的设计标准，助力产品长期迭代与可维护性</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="time">❖ 2016.06 ~ 2021.09</div>
+                            <div class="name">
+                                <div class="company"><a href="" target="_blank">杭州飞巴网络科技有限公司</a></div>
+                                <div class="job">UI 设计师</div>
+                            </div>
+                            <div class="project-experience">
+                                <div class="item">
+                                    <div class="title">飞巴商旅</div>
+                                    <div class="desc">
+                                        <ul>
+                                            <li>主导公司飞巴商旅 APP、SaaS 系统、官网等产品从0到1的设计</li>
+                                            <li>制定飞巴商旅3.0设计体系（设计规范的落地与组件化设计流程）</li>
+                                            <li>把关开发对高保真设计稿的还原度，并为开发提供页面布局建议</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="time">❖ 2015.07 ~ 2016.01</div>
+                            <div class="name">
+                                <div class="company"><a href="" target="_blank">杭州优位科技有限公司</a></div>
+                                <div class="job">UI 设计实习</div>
+                            </div>
+                            <div class="project-experience">
+                                <div class="item">
+                                    <div class="title">停车有位</div>
+                                    <div class="desc">
+                                        <ul>
+                                            <li>参与完成公司“停车有位”APP 的上线</li>
+                                            <li>参与完成了公司“停车有位“APP二期迭代</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <!-- <div class="copyright">
+            <div>© 2023 Design by Asorn</div>
+            <span>|</span>
+            <div class="fillings">
+                <a href="" target="_blank">Asorn</a>
+            </div>
+            <span>|</span>
+            <div class="friends">
+                <a href="" target="_blank">ZDO</a>
+            </div>
+        </div> -->
+    </div>
+    <div class="widget">
+        <div class="shape-light"></div>
+        <div class="shape-star">
+            <div class="rising-stars rising-stars-visible">
+                <div style="height:1px;width:1px"></div>
+                <div style="height:2px;width:2px"></div>
+                <div style="height:1px;width:1px"></div>
+            </div>
+        </div>
+        <div class="shape-earth"></div>
+    </div>
+</body>
+<script>
+    // 打字效果，感谢 typed.js: https://mattboldt.github.io/typed.js/docs/
+    const options = {
+        strings: [
+            ">_ welcome to my secret garden ^1000",
+            ">_ and let's explore it now ^1000",
+        ],
+        typeSpeed: 50, // 打印速度
+        backSpeed: 20, // 回退速度
+        startDelay: 300, // 开始之前的延迟300毫秒
+        loop: true, // 是否循环
+        showCursor: false, // 不显示光标
+    };
+    const typed = new Typed('#typed', options);
+</script>
+<script src="./js/main.min.js"></script>
+</html>

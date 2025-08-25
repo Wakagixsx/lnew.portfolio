@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品展示</title>
+    <style>
+        /* 重置默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        /* 容器样式 */
+        .image-container {
+            width: 100%;
+            max-width: 1200px; /* 最大宽度限制 */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 图片样式 */
+        .image-item {
+            width: 100%;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* 加载指示器样式 */
+        .loading-indicator {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container" id="imageContainer">
+        <!-- 图片将通过JavaScript自动加载 -->
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageContainer = document.getElementById('imageContainer');
+            
+            /**
+             * 图片配置
+             * 当前已知的图片编号，系统会自动检测56以后的图片是否存在
+             * 如果存在，会自动添加到页面中
+             * 无需手动更新此数组，只需将新图片放入image/Individual/文件夹即可
+             */
+            let imageNumbers = [56];
+            let loadedImages = 0;
+            let totalImages = imageNumbers.length;
+            
+            // 自动检测是否有新图片（从56开始，最多检测到100）
+            const maxCheckNumber = 100;
+            let checkingNumber = 57; // 从56后面的数字开始检测
+            let pendingChecks = 0;
+            
+            // 添加加载状态指示
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.className = 'loading-indicator';
+            loadingIndicator.textContent = `加载中... (0/${totalImages})`;
+            loadingIndicator.style.textAlign = 'center';
+            loadingIndicator.style.padding = '20px';
+            loadingIndicator.style.color = '#666';
+            document.body.insertBefore(loadingIndicator, imageContainer);
+            
+            /**
+             * 检查图片是否存在的辅助函数
+             * 这个函数可以帮助自动检测图片是否存在
+             * 将来如果有更多图片，可以使用此函数自动检测并添加
+             */
+            function checkImageExists(url, callback) {
+                const img = new Image();
+                img.onload = function() { callback(true); };
+                img.onerror = function() { callback(false); };
+                img.src = url;
+            }
+            
+            // 检测新图片并更新图片数组
+            function checkForNewImages() {
+                if (checkingNumber > maxCheckNumber || pendingChecks > 0) return;
+                
+                pendingChecks++;
+                const url = `image/Individual/${checkingNumber}.jpg`;
+                
+                checkImageExists(url, function(exists) {
+                    pendingChecks--;
+                    
+                    if (exists) {
+                        // 找到新图片，添加到数组
+                        imageNumbers.push(checkingNumber);
+                        totalImages = imageNumbers.length;
+                        loadingIndicator.textContent = `加载中... (${loadedImages}/${totalImages})`;
+                        
+                        // 创建并添加新图片
+                        addImageToPage(checkingNumber);
+                        
+                        // 继续检查下一个编号
+                        checkingNumber++;
+                        setTimeout(checkForNewImages, 100);
+                    } else {
+                        // 如果连续3个编号都没有图片，则停止检查
+                        if (checkingNumber - imageNumbers[imageNumbers.length - 1] >= 3) {
+                            console.log('检测完成，没有更多图片');
+                        } else {
+                            // 继续检查下一个编号
+                            checkingNumber++;
+                            setTimeout(checkForNewImages, 100);
+                        }
+                    }
+                });
+            }
+            
+            // 添加图片到页面的函数
+            function addImageToPage(imageNumber) {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'image-item';
+                
+                const img = document.createElement('img');
+                img.src = `image/Individual/${imageNumber}.jpg`;
+                img.alt = `图片${imageNumber}`;
+                img.loading = 'lazy'; // 添加懒加载以提高性能
+                
+                // 图片加载成功处理
+                img.onload = function() {
+                    loadedImages++;
+                    loadingIndicator.textContent = `加载中... (${loadedImages}/${totalImages})`;
+                    
+                    if (loadedImages === totalImages) {
+                        // 所有已知图片加载完成，检查是否有新图片
+                        loadingIndicator.textContent = '检查新图片中...';
+                        setTimeout(checkForNewImages, 500);
+                        
+                        // 如果没有发现新图片，3秒后隐藏加载指示器
+                        setTimeout(() => {
+                            if (loadedImages === totalImages) {
+                                loadingIndicator.textContent = '所有图片加载完成！';
+                                setTimeout(() => {
+                                    loadingIndicator.style.display = 'none';
+                                }, 2000);
+                            }
+                        }, 3000);
+                    }
+                };
+                
+                // 图片加载失败处理
+                img.onerror = function() {
+                    loadedImages++;
+                    this.src = 'data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 300 200%22%3E%3Crect width%3D%22300%22 height%3D%22200%22 fill%3D%22%23cccccc%22%3E%3C%2Frect%3E%3Ctext x%3D%22150%22 y%3D%22100%22 font-size%3D%2220%22 text-anchor%3D%22middle%22 alignment-baseline%3D%22middle%22 fill%3D%22%23666666%22%3E图片 ${imageNumber} 加载失败%3C%2Ftext%3E%3C%2Fsvg%3E';
+                    this.style.backgroundColor = '#f0f0f0';
+                    
+                    if (loadedImages === totalImages) {
+                        // 检查是否有新图片
+                        setTimeout(checkForNewImages, 500);
+                        
+                        setTimeout(() => {
+                            if (loadedImages === totalImages) {
+                                loadingIndicator.textContent = '所有图片加载完成！';
+                                setTimeout(() => {
+                                    loadingIndicator.style.display = 'none';
+                                }, 2000);
+                            }
+                        }, 3000);
+                    }
+                };
+                
+                imageItem.appendChild(img);
+                imageContainer.appendChild(imageItem);
+            }
+            
+            // 初始化：加载已知图片
+            imageNumbers.forEach(imageNumber => {
+                addImageToPage(imageNumber);
+            });
+        });
+    </script>
+</body>
+</html>
