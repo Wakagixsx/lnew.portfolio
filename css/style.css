@@ -1345,6 +1345,12 @@ body {
   list-style: circle;
 }
 
+.about .about-bottom .experience .item .project-experience .item .desc li span {
+  font-size: 14px;
+  color: #3f81ff;
+  font-weight: 500;
+}
+
 /* tooltip */
 .tooltip {
   position: relative;
