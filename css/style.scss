@@ -468,9 +468,9 @@ body {
         &::after {
             content: '';
             position: absolute;
-            width: 512px;
+            width: 600px;
             height: 512px;
-            background-image: radial-gradient(circle at center, rgba(255, 255, 255, .3) 1px, transparent 1px);
+            background-image: radial-gradient(circle at center, rgba(255, 255, 255, .4) 1px, transparent 1px);
             background-size: 8px 8px;
             mask-image: radial-gradient(at center, #fff, transparent 72%);
             -webkit-mask-image: radial-gradient(at center, #fff, transparent 72%);
