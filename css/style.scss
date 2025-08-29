@@ -415,7 +415,7 @@ body {
 
     .hello {
         @include main-center;
-        height: 360px;
+        height: 300px;
         width: 100%;
         max-width: var(--mw);
         flex-direction: column;
